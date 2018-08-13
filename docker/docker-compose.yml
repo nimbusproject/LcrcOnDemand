@@ -1,0 +1,21 @@
+version: "3"
+services:
+  master:
+    image: jtqv84/torque_only_master:latest
+    deploy:
+      replicas: 1
+    hostname: "lcrc-head"
+    environment:
+      - LCRC_WORKERS=372
+  worker:
+    image: jtqv84/torque_only_worker:latest
+    deploy:
+      replicas: 372
+    hostname: "lcrc-worker-{{.Task.Slot}}"
+    environment:
+      - LCRC_WORKERS=372
+
+networks:
+  default:
+    external:
+      name: hpc-cluster-network
