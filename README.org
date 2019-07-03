@@ -33,6 +33,7 @@ If you want to run the baseline experiment (batch only), run the following.
 cd LcrcOnDemand/docker
 # edit: docker-compose.yml
 #     substitute 372 with the desired number of compute nodes you want to launch in your cluster
+docker swarm init
 ./launch-torque-only-cluster.sh
 # run "docker service ps hpc_cluster_master" to locate at which server is the lcrc-master container running
 # log on to that server, run "docker ps | grep master" to find the container id
